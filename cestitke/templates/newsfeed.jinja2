@@ -1,0 +1,28 @@
+{% for ecard in ecards %}
+
+<div class="card-wrapper">
+    <h3 class="card-title">{{ecard.title}}</h3>
+<div class="frame {{ecard.frame.name}}">
+    <img src="{{ecard.image.path}}" alt="Ime slike">
+</div>
+
+<p class="card-message">
+    {{ecard.message}}
+</p>
+<span class="card-divider"></span>
+
+<div class="block-actions">
+    {% if 'user' in request.session and ecard.user_id == request.session['user']['user_id'] %}
+    <a href="{{request.route_path('ecardedit', id = ecard.id)}}">
+        <img src="../static/img/edit.png" alt="Uredi čestitku">
+    </a>
+    
+     <a href="{{request.route_path('ecarddelete', id = ecard.id)}}">
+        <img src="../static/img/delete.png" alt="Obriši čestitku">
+    </a>
+    {% endif %}
+</div>
+</div>
+
+{% endfor %}
+

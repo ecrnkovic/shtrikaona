@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../static/css/styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=latin-ext" rel="stylesheet">
+        <title>News feed</title>
+    </head>
+    <body>
+        <header>
+            <div id="block-identity">
+                <a href="#" class="name">Štrikaona koda</a>
+            </div>
+            {% if 'user' in request.session %} 
+                {% include 'header_logged.jinja2' %}
+            {% else %}
+                {% include 'header_guest.jinja2' %}
+            {% endif %}
+        </header>
+
+        {% include 'newsfeed.jinja2' %}
+    </body>
+</html>
