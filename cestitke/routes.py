@@ -8,6 +8,7 @@ def includeme(config):
     config.add_route('ecardedit', '/ecardedit/{id}')
     config.add_route('my', '/my')
     config.add_route('ecarddelete', '/ecarddelete/{id}')
+    config.add_route('ecard', '/ecard/{id}')
 
 
 

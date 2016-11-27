@@ -141,3 +141,15 @@ def ecarddelete(request):
     ecard.deleted = True
     ecard.last_change_date = datetime.utcnow()
     return HTTPFound('/my')
+
+@view_config(route_name='ecard', renderer='cestitke:templates/home.jinja2')
+def ecard(request):
+    ecard_id = request.matchdict.get("id", None)
+    if not ecard_id:
+        return HTTPNotFound()
+    ecard = Session.query(Ecard).filter(Ecard.id == ecard_id).first()
+
+    if not ecard:
+        return HTTPNotFound()
+
+    return {"ecards": [ecard]}
